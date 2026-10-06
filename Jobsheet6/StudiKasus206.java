@@ -23,7 +23,6 @@ public class StudiKasus206 {
         if (jenis.equalsIgnoreCase("BELMAWA")
                 || jenis.equalsIgnoreCase("BAKORMA")
                 || jenis.equalsIgnoreCase("Mandiri")) {
-            // Cabang perlombaan
             System.out.print("Jumlah dokumen  : ");
             dokumen = input.nextInt();
             System.out.print("Peringkat juara : ");
@@ -41,7 +40,30 @@ public class StudiKasus206 {
                 status = tidakDapat
                         + " (hanya untuk Juara 1/2/3).";
             }
+        } else if (jenis.equalsIgnoreCase("PKM")) {
+            System.out.print("Jumlah dokumen  : ");
+            dokumen = input.nextInt();
+            System.out.print("Status pendanaan PKM "
+                    + "(1 = lolos, 0 = tidak lolos) : ");
+            statusPKM = input.nextInt();
+
+            if (statusPKM == 1) {
+                if (dokumen == 4) {
+                    status = berhak
+                            + " (PKM lolos pendanaan).";
+                } else {
+                    kurang = 4 - dokumen;
+                    status = awalKurang + kurang + akhirKurang;
+                }
+            } else {
+                status = tidakDapat
+                        + " (PKM tidak lolos pendanaan).";
+            }
+        } else {
+            status = tidakDapat + " (jenis kegiatan tidak "
+                    + "termasuk ketentuan).";
         }
 
+        System.out.println("Status : " + status);
     }
 }
