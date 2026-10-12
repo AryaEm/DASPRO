@@ -6,23 +6,27 @@ public class ParkirMotor06 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("=========================== PARKIR MOTOR KAMPUS ==========================");
+        System.out.println();
+        System.out.println("=== PARKIR MOTOR KAMPUS ===");
+        System.out.println();
 
-        int lamaParkir, totalBiaya;
-        int jamPertama = 2000;
-        int jamBerikutnya = 1000;
-
-        System.out.print("Masukkan lama parkir (jam): ");
-        lamaParkir = input.nextInt();
+        System.out.print("Masukkan lama parkir (jam) : ");
+        int lamaParkir = input.nextInt();
 
         if (lamaParkir < 2) {
-            System.out.print("Lama parkir minimal 2 jam: ");
-            lamaParkir = input.nextInt();
+            System.out.println("Input tidak valid. Lama parkir minimal 2 jam.");
+            System.out.println();
+        } else {
+            final int TARIF_JAM_PERTAMA = 2000;
+            final int TARIF_JAM_BERIKUTNYA = 1000;
+
+            int tarifJamPertama = TARIF_JAM_PERTAMA;
+            int jamBerikutnya = lamaParkir - 1;
+            int tarifJamBerikutnya = jamBerikutnya * TARIF_JAM_BERIKUTNYA;
+            int totalBiaya = tarifJamPertama + tarifJamBerikutnya;
+
+            System.out.printf("Total Biaya Parkir    : Rp %,d\n", totalBiaya);
+            System.out.println();
         }
-
-        totalBiaya = jamPertama + (lamaParkir - 1) * jamBerikutnya;
-
-        System.out.println("Lama Parkir: " + lamaParkir + " jam");
-        System.out.println("Total Biaya Parkir: Rp" + totalBiaya);
     }
 }
